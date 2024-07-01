@@ -1,4 +1,4 @@
-# Industry-Safety-Detection-using-Yolov7
+# Mlops-Implementation-Industry-Safety-Detection-using-Yolov7 
 
 
 
