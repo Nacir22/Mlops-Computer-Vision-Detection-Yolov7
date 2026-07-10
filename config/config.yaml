@@ -1,0 +1,38 @@
+# =============================================================================
+# Central configuration for the Industrial Safety Detection (ISD) pipeline.
+#
+# This is the SINGLE SOURCE OF TRUTH for all tunable parameters.
+# Change a value here instead of editing Python code.
+# The constants module (isd/constant/training_pipeline/__init__.py) reads this file.
+# =============================================================================
+
+artifacts:
+  # Root folder where every pipeline run writes its outputs.
+  root_dir: artifacts
+
+data_ingestion:
+  dir_name: data_ingestion
+  feature_store_dir: feature_store
+  s3_data_name: isd_data_mini.zip     # name of the dataset archive stored on S3
+  data_bucket_name: isd-data-24       # S3 bucket that holds the dataset
+
+data_validation:
+  dir_name: data_validation
+  status_file: status.txt
+  # Files/folders that MUST exist in the dataset for it to be considered valid.
+  required_files:
+    - images
+    - labels
+    - classes.names
+    - train.txt
+    - val.txt
+
+model_trainer:
+  dir_name: model_trainer
+  pretrained_weight_url: "https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7.pt"
+  epochs: 1          # number of training epochs (increase for real training)
+  batch_size: 8      # training batch size
+
+model_pusher:
+  model_bucket_name: isd-data-24      # S3 bucket where the trained model is uploaded
+  s3_model_name: best.pt              # key/name of the model file on S3
