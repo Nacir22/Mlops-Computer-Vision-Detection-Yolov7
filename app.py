@@ -1,6 +1,7 @@
 import sys,os
 from isd.pipeline.training_pipeline import TrainPipeline
 from isd.exception import isdException
+from isd.logger import logging
 from isd.utils.main_utils import decodeImage, encodeImageIntoBase64
 from flask import Flask, request, jsonify, render_template,Response
 from flask_cors import CORS, cross_origin
@@ -46,12 +47,13 @@ def predictRoute():
         os.system("rm -rf yolov7/runs")
 
     except ValueError as val:
-        print(val)
+        logging.error(f"ValueError in predictRoute: {val}")
         return Response("Value not found inside  json data")
     except KeyError:
+        logging.error("KeyError in predictRoute: incorrect key passed")
         return Response("Key value error incorrect key passed")
     except Exception as e:
-        print(e)
+        logging.error(f"Unexpected error in predictRoute: {e}")
         result = "Invalid input"
 
     return jsonify(result)

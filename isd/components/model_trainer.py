@@ -34,7 +34,7 @@ class ModelTrainer:
                 img_list = os.listdir(train_img_path)
                 for img in img_list:
                     f.write(os.path.join(train_img_path,img+'\n'))
-                print("Done Training images")
+                logging.info("Done writing training image paths to train.txt")
 
 
             # Validation Image
@@ -42,7 +42,7 @@ class ModelTrainer:
                 img_list = os.listdir(val_img_path)
                 for img in img_list:
                     f.write(os.path.join(val_img_path,img+'\n'))
-                print("Done Validation Image")
+                logging.info("Done writing validation image paths to val.txt")
 
 
             
