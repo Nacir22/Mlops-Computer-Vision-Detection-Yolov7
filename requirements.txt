@@ -8,6 +8,11 @@ mypy-boto3-s3
 flask-cors
 flask
 
+# API (FastAPI service) ----------------------
+fastapi
+uvicorn[standard]
+python-multipart
+
 
 # Usage: pip install -r requirements.txt
 
