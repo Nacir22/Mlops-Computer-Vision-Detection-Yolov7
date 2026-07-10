@@ -1,0 +1,32 @@
+# Keep the build context small and the image clean.
+
+# Version control
+.git
+.gitignore
+
+# Python caches / build artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Run-time outputs (should not be baked into the image)
+logs/
+log/
+artifacts/
+*.log
+
+# Dev / test files not needed to run the app
+tests/
+conftest.py
+requirements-dev.txt
+
+# OS noise
+.DS_Store
+Thumbs.db
